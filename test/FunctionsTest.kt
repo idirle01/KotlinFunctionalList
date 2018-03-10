@@ -1,6 +1,6 @@
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import solution.*
+import orig.*
 import kotlin.test.assertFailsWith
 
 class FunctionsTest {
