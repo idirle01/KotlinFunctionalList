@@ -1,12 +1,41 @@
 package orig
 
-fun <T> tail(l: List<T>): List<T> = TODO()
+fun <T> tail(l: List<T>): List<T> = when (l) {
+    emptyList<T>() -> throw IllegalArgumentException()
+    else -> l.drop(1)
+}
 
-fun <T> setHead(l: List<T>, item: T): List<T> = TODO()
+fun <T> head (l: List<T>): T = (l.take(1))[0]
 
-fun <T> drop(l: List<T>, n: Int): List<T> = TODO()
+fun <T> setHead(l: List<T>, item: T): List<T> = when (l) {
+    emptyList<T>() -> listOf(item)
+    else -> listOf(item) + tail(l)
+}
 
-fun <T> init(l: List<T>): List<T> = TODO()
+fun <T> drop(l: List<T>, n: Int): List<T> = when (n) {
+    in 1 until l.size -> {
+        dropHelper(l,n)
+    } else -> emptyList()
+}
+
+var counter: Int = 0
+fun <T> dropHelper (l:List<T>, n: Int): List<T> {
+    if (counter == n) {
+        return tail(l)
+    } else {
+        counter ++
+        return dropHelper(tail(l), n-1)
+    }
+}
+
+fun <T> init(l: List<T>): List<T> = when (l) {
+    emptyList<T>() -> throw IllegalArgumentException()
+    else ->
+        if (l.size == 1) emptyList() else listOf(head(l)) + init(tail(l))
+    
+}
+
+
 
 fun <T> foldLeft(l: List<T>, initial : T, f: (T, T) -> T): T = TODO()
 
