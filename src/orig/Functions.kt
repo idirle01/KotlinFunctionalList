@@ -32,14 +32,18 @@ fun <T> init(l: List<T>): List<T> = when (l) {
     emptyList<T>() -> throw IllegalArgumentException()
     else ->
         if (l.size == 1) emptyList() else listOf(head(l)) + init(tail(l))
-    
+
 }
 
 
+fun <T> foldLeft(l: List<T>, initial : T, f: (T, T) -> T): T = when (l) {
+    emptyList<T>() -> initial
+    else -> foldLeft(tail(l), f(initial, head(l)), f)
+}
 
-fun <T> foldLeft(l: List<T>, initial : T, f: (T, T) -> T): T = TODO()
 
-fun <T> sum(l: List<T>) : T = TODO()
+fun <T> sum(l: List<T>) : T = foldLeft(l,0,{x,y -> x + y})
+
 
 fun <T> product(l: List<T>) : T = TODO()
 
