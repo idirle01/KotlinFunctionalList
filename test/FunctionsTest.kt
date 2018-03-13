@@ -77,9 +77,14 @@ class FunctionsTest {
         assertEquals((2 to 11).toList(), map((1 to 10).toList(), { x -> x + 1 }))
     }
 
-    @Test // "orig.filter filters the listOf"
+    /*@Test // "orig.filter filters the listOf"
     fun filterTest() {
         assertEquals((1 to 5).toList(), filter((-5 to 5).toList(), { x: Int -> x > 0 }))
+    }*/
+
+    @Test
+    fun filterTest() {
+        assertEquals(listOf(10,15,60), filter(listOf(0,1,3,4,5,10,15,60), {x:Int -> x>=10}))
     }
 
     @Test // "orig.flatMap maps and flattens"
