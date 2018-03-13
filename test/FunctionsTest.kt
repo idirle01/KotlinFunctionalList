@@ -8,6 +8,7 @@ class FunctionsTest {
     @Test // "Tail removes the first element"
     fun tailTest() {
         assertEquals(listOf(2, 3, 4), tail(listOf(1, 2, 3, 4)))
+        assertEquals(emptyList<Int>(), tail(listOf(20)))
     }
 
     @Test // "orig.setHead changes the first element of the listOf"
@@ -18,6 +19,8 @@ class FunctionsTest {
     @Test // "orig.drop removes N elements from the front of the listOf"
     fun dropTest() {
         assertEquals(listOf(3), drop(listOf(1, 2, 3), 2))
+        assertEquals(emptyList<Int>(), drop(listOf(100), 1))
+        assertEquals(emptyList<Int>(), drop (listOf(20,25,30,35,40), 5))
     }
 
     @Test // "init removes the last element"

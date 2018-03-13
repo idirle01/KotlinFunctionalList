@@ -42,16 +42,24 @@ fun <T> foldLeft(l: List<T>, initial : T, f: (T, T) -> T): T = when (l) {
 }
 
 
-fun <T> sum(l: List<T>) : T = foldLeft(l,0,{x,y -> x + y})
+fun <T> sum(l: List<T>) : T = TODO() //  this doesn't work for some reason
 
 
-fun <T> product(l: List<T>) : T = TODO()
+fun <T> product(l: List<T>) : T = TODO()  //  this doesn't work for some reason
 
-fun <T> length(l: List<T>) : Int = TODO()
+fun <T> length(l: List<T>) : Int = TODO()  //  this doesn't work for some reason
 
-fun <T> reverse(l: List<T>): List<T> = TODO()
+// need to have a look at how we can do this with foldLeft
+// look into tailrec options
+fun <T> reverse(l: List<T>): List<T> =  when (l) {
+    emptyList<T>() -> emptyList()
+    else -> reverse(tail(l)) + head(l)
+}
 
-fun <T> flatten(l: List<List<T>>): List<T> = TODO()
+fun <T> flatten(l: List<List<T>>): List<T> = when (l) {
+    emptyList<T>() -> emptyList()
+    else -> head(l) + flatten(tail(l))
+}
 
 fun <T> map(l: List<T>, f: (T) -> T): List<T> = TODO()
 
