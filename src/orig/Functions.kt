@@ -56,12 +56,16 @@ fun <T> reverse(l: List<T>): List<T> =  when (l) {
     else -> reverse(tail(l)) + head(l)
 }
 
+
 fun <T> flatten(l: List<List<T>>): List<T> = when (l) {
     emptyList<T>() -> emptyList()
     else -> head(l) + flatten(tail(l))
 }
 
-fun <T> map(l: List<T>, f: (T) -> T): List<T> = TODO()
+fun <T> map(l: List<T>, f: (T) -> T): List<T> = when (l) {
+    emptyList<T>() -> emptyList()
+    else -> listOf(f(head(l))) + map(tail(l), f)
+}
 
 fun <T> filter(l: List<T>, f: (T) -> Boolean): List<T> = TODO()
 
