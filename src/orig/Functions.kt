@@ -77,7 +77,6 @@ fun <T> filter(l: List<T>, f: (T) -> Boolean): List<T> = when (l) {
 
 
 fun <T> flatMap(l: List<T>, f:(T) -> List<T>): List<T> = TODO()
-
 fun <T> maxAverage(l: List<Triple<T, T, T>>): T = TODO()
 
 fun <T> variance(l: List<T>): T = TODO()
